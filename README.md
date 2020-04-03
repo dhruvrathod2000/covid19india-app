@@ -4,10 +4,19 @@ I am just a beginner in flutter(as you can see) and I would like suggestions abo
 
 
 Home page
-<img src="https://github.com/dhruvrathod2000/covid19india-app/blob/master/Screenshot_20200403-223947.jpg" width="200" height="500">
+
+<img src="https://github.com/dhruvrathod2000/covid19india-app/blob/master/Screenshot_20200403-223947.jpg" width="250" height="500">
+
+
 
 State statistics
-<img src="https://github.com/dhruvrathod2000/covid19india-app/blob/master/Screenshot_20200403-224002.jpg" height="500" width="200">
+
+
+<img src="https://github.com/dhruvrathod2000/covid19india-app/blob/master/Screenshot_20200403-224002.jpg" height="500" width="250">
+
+
 
 District Statistics
-<img src="https://github.com/dhruvrathod2000/covid19india-app/blob/master/Screenshot_20200403-224015.jpg" height="500" width="200">
+
+
+<img src="https://github.com/dhruvrathod2000/covid19india-app/blob/master/Screenshot_20200403-224015.jpg" height="500" width="250">
