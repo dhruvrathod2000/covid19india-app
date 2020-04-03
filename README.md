@@ -12,11 +12,11 @@ Home page
 State statistics
 
 
-<img src="https://github.com/dhruvrathod2000/covid19india-app/blob/master/Screenshot_20200403-224002.jpg" height="350" width="800">
+<img src="https://github.com/dhruvrathod2000/covid19india-app/blob/master/Screenshot_20200403-224002.jpg" height="800" width="350">
 
 
 
 District Statistics
 
 
-<img src="https://github.com/dhruvrathod2000/covid19india-app/blob/master/Screenshot_20200403-224015.jpg" height="350" width="800">
+<img src="https://github.com/dhruvrathod2000/covid19india-app/blob/master/Screenshot_20200403-224015.jpg" height="800" width="350">
