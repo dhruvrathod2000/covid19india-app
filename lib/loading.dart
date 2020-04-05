@@ -40,7 +40,7 @@ class _LoadingState extends State<Loading> {
           children: <Widget>[
             SpinKitRing(color: Colors.amberAccent,
             size: 80.0,
-            lineWidth: 10.0,
+            lineWidth: 5.0,
             ),
             SizedBox(height: 15.0,),
             Text('Fetching Data',

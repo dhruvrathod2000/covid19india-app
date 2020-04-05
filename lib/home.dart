@@ -9,6 +9,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     Map data = ModalRoute.of(context).settings.arguments;
+    //print(data);
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
@@ -46,11 +47,12 @@ class _HomeState extends State<Home> {
               height: 50.0,
             ),
             RaisedButton.icon(
+              highlightColor: Colors.lightGreenAccent,
               color: Colors.blueGrey[900],
               onPressed: () {
                 Navigator.pushNamed(context,'/loadingstate');
               },
-              icon: Icon(Icons.edit_location,
+              icon: Icon(Icons.table_chart,
                 color: Colors.blueGrey[400],),
               label: Text('State-wise',
                 style: TextStyle(
@@ -83,7 +85,7 @@ class _HomeState extends State<Home> {
                 ),
                 children: <TextSpan> [
                   TextSpan(
-                      text: (data['deltaconfirmed']==0)?' ':'  [▲${data['deltaconfirmed'].toString()}]',
+                      text: (data['deltaconfirmed']=='0')?' ':'  [▲${data['deltaconfirmed'].toString()}]',
                     style: TextStyle(
                       color: Colors.red[600],
                       letterSpacing: 2.0,
@@ -113,7 +115,7 @@ class _HomeState extends State<Home> {
                 ),
                 children: <TextSpan> [
                   TextSpan(
-                    text: (data['deltarecovered']==0)?' ':'  [▲${data['deltarecovered'].toString()}]',
+                    text: (data['deltarecovered']=='0')?' ':'  [▲${data['deltarecovered'].toString()}]',
                     style: TextStyle(
                       color: Colors.lightGreenAccent,
                       letterSpacing: 2.0,
@@ -143,7 +145,7 @@ class _HomeState extends State<Home> {
                 ),
                 children: <TextSpan> [
                   TextSpan(
-                    text: (data['deltadeaths']==0)?' ':'  [▲${data['deltadeaths'].toString()}]',
+                    text: (data['deltadeaths']=='0')?' ':'  [▲${data['deltadeaths'].toString()}]',
                     style: TextStyle(
                       color: Colors.red[600],
                       letterSpacing: 2.0,

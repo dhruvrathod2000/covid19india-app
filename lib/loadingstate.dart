@@ -8,7 +8,6 @@ class LoadingState extends StatefulWidget {
 }
 
 class _LoadingStateState extends State<LoadingState> {
-  bool boole=false;
   CoronaStateApi instance = new CoronaStateApi();
   List data=[];
   Future<void> receiveStateData() async{
@@ -34,12 +33,14 @@ class _LoadingStateState extends State<LoadingState> {
             case ConnectionState.none:
               return SpinKitRing(
                 size: 80.0,
+                lineWidth: 8.0,
                 color: Colors.amberAccent,
               );
               break;
             case ConnectionState.waiting:
               return SpinKitRing(
                 size: 80.0,
+                lineWidth: 8.0,
                 color: Colors.amberAccent,
               );
               break;
@@ -67,8 +68,6 @@ class _LoadingStateState extends State<LoadingState> {
                       Expanded(
                         child: SingleChildScrollView(
                           child: DataTable(
-                            sortColumnIndex: 2,
-                            sortAscending: boole,
                             columnSpacing:15,
                             columns: [
                               DataColumn(
@@ -84,11 +83,6 @@ class _LoadingStateState extends State<LoadingState> {
                                   label: Text('A'),
                                   numeric: true,
                                   tooltip: "Active Cases",
-                                  onSort: (index,boolea) {
-                                    setState(() {
-                                      boole=!boole;
-                                    });
-                                  }
                               ),
                               DataColumn(
                                   label: Text('R'),
@@ -140,7 +134,11 @@ class _LoadingStateState extends State<LoadingState> {
                                   },
                                 ),
                                 DataCell(
-                                  Text(state['active']),
+                                  Text(state['active'],
+                                  style: TextStyle(
+                                    fontSize: 10.0,
+                                  ),
+                                  ),
                                   onTap: () {
                                     print('Selected state is ${state['state']}');
                                     Navigator.pushNamed(context,'/district',arguments: {

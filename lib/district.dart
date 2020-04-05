@@ -10,7 +10,7 @@ class District extends StatefulWidget {
 
 class _DistrictState extends State<District> {
   Map data={};
-  bool sort=false;
+  //bool sort=false;
   List<String> districts=[];
   Future<void> receiveData(String state) async{
     Response response= await get("https://api.covid19india.org/state_district_wise.json");
@@ -43,18 +43,21 @@ class _DistrictState extends State<District> {
             case ConnectionState.none:
               return SpinKitRing(
                 size: 80.0,
+                lineWidth: 8.0,
                 color: Colors.amberAccent,
               );
               break;
             case ConnectionState.waiting:
               return SpinKitRing(
                 size: 80.0,
+                lineWidth: 8.0,
                 color: Colors.amberAccent,
               );
               break;
             case ConnectionState.active:
               return SpinKitRing(
                 size: 80.0,
+                lineWidth: 8.0,
                 color: Colors.amberAccent,
               );
               break;
@@ -65,8 +68,6 @@ class _DistrictState extends State<District> {
                 {
                   return SingleChildScrollView(
                     child: DataTable(
-                            sortColumnIndex: 1,
-                            sortAscending: sort,
                             columnSpacing: 20.0,
                             columns: <DataColumn> [
                               DataColumn(
@@ -77,12 +78,6 @@ class _DistrictState extends State<District> {
                                 label: Text('Confirmed'),
                                 tooltip: "Confirmed Cases",
                                 numeric: true,
-                                onSort: (inte,boole) {
-                                  setState(() {
-                                    sort=!sort;
-                                    print(sort);
-                                  });
-                                },
                               ),
                             ],
                             rows: districts.map((district) => DataRow(
@@ -97,22 +92,24 @@ class _DistrictState extends State<District> {
                                   ),
                                 ),
                                 DataCell(
-                                  RichText(
-                                    text: TextSpan(
-                                      text: (data[district]['delta']['confirmed']==0)?' ':'▲${data[district]['delta']['confirmed'].toString()}   ',
-                                      style: TextStyle(
-                                        color: Colors.red[600],
-                                        fontSize: 10.0,
+                                  Center(
+                                    child: RichText(
+                                      text: TextSpan(
+                                        text: (data[district]['delta']['confirmed']==0)?' ':'▲${data[district]['delta']['confirmed'].toString()}   ',
+                                        style: TextStyle(
+                                          color: Colors.red[600],
+                                          fontSize: 10.0,
+                                        ),
+                                        children: <TextSpan> [
+                                          TextSpan(
+                                            text: data[district]['confirmed'].toString(),
+                                            style: TextStyle(
+                                              color: Colors.white70,
+                                              fontSize: 13.0,
+                                            ),
+                                          )
+                                        ],
                                       ),
-                                      children: <TextSpan> [
-                                        TextSpan(
-                                          text: data[district]['confirmed'].toString(),
-                                          style: TextStyle(
-                                            color: Colors.white70,
-                                            fontSize: 13.0,
-                                          ),
-                                        )
-                                      ],
                                     ),
                                   ),
                                 ),
