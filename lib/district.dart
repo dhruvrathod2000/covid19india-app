@@ -14,8 +14,8 @@ class _DistrictState extends State<District> {
   List<String> districts=[];
   Future<void> receiveData(String state) async{
     Response response= await get("https://api.covid19india.org/state_district_wise.json");
-    Map state_data = jsonDecode(response.body);
-    data=state_data['$state']['districtData'];
+    Map stateData = jsonDecode(response.body);
+    data=stateData['$state']['districtData'];
     districts = data.keys.toList();
     //print(districts);
     //print(districts);
@@ -63,10 +63,11 @@ class _DistrictState extends State<District> {
               break;
             case ConnectionState.done:
               if(snapshot.hasError)
-                print('error');
+                return Text('Error');
               else
                 {
                   return SingleChildScrollView(
+                    physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                     child: DataTable(
                             columnSpacing: 20.0,
                             columns: <DataColumn> [

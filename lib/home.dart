@@ -10,6 +10,8 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     Map data = ModalRoute.of(context).settings.arguments;
     //print(data);
+    int deltaActive=int.parse(data['deltaconfirmed'])-int.parse(data['deltarecovered'])-int.parse(data['deltadeaths']);
+    Color deltaColor= (deltaActive > 0)?Colors.red[600]:Colors.lightGreenAccent;
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
@@ -19,6 +21,7 @@ class _HomeState extends State<Home> {
         title: Text('Total Cases'),
       ),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         padding: EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 0.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,15 +51,35 @@ class _HomeState extends State<Home> {
             ),
             RaisedButton.icon(
               highlightColor: Colors.lightGreenAccent,
-              color: Colors.blueGrey[900],
+              color: Colors.blueGrey[500],
               onPressed: () {
                 Navigator.pushNamed(context,'/loadingstate');
               },
               icon: Icon(Icons.table_chart,
-                color: Colors.blueGrey[400],),
+                color: Colors.blueGrey[900],),
               label: Text('State-wise',
                 style: TextStyle(
-                  color: Colors.blueGrey[400],
+                  color: Colors.blueGrey[900],
+                  fontSize: 20.0,
+                ),
+              ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(20.0),
+                  side: BorderSide(color: Colors.grey[900])
+              ),
+            ),
+            SizedBox(height:15.0 ,),
+            RaisedButton.icon(
+              highlightColor: Colors.lightGreenAccent,
+              color: Colors.blueGrey[500],
+              onPressed: () {
+                Navigator.pushNamed(context,'/filtergraph');
+              },
+              icon: Icon(Icons.show_chart,
+                color: Colors.blueGrey[900],),
+              label: Text('Graphs',
+                style: TextStyle(
+                  color: Colors.blueGrey[900],
                   fontSize: 20.0,
                 ),
               ),
@@ -165,12 +188,24 @@ class _HomeState extends State<Home> {
               ),
             ),
             SizedBox(height: 15.0,),
-            Text(
-              data['active'].toString(),
-              style: TextStyle(
-                letterSpacing: 2.0,
-                color: Colors.blueGrey[200],
-                fontSize: 20.0,
+            RichText(
+              text: TextSpan(
+                text: data['active'].toString(),
+                style: TextStyle(
+                  letterSpacing: 2.0,
+                  color: Colors.blueGrey[200],
+                  fontSize: 20.0,
+                ),
+                children: <TextSpan> [
+                  TextSpan(
+                      text: (deltaActive==0)?' ':(deltaActive > 0 ? '  [▲${deltaActive.toString()}]': '  [▼${(deltaActive*-1).toString()}]'),
+                    style: TextStyle(
+                      color: deltaColor,
+                      letterSpacing: 2.0,
+                      fontSize: 15.0,
+                    ),
+                  ),
+                ],
               ),
             ),
             SizedBox(height: 40.0,),
