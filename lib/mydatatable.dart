@@ -61,12 +61,16 @@ class _MyDataTableState extends State<MyDataTable> {
           ),
           Expanded(
             child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
               physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-              child: DataTable(
+              child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                scrollDirection: Axis.horizontal,
+                child: DataTable(
                 columnSpacing:10,
                 columns: [
                   DataColumn(
-                    label: Text('S/UT',
+                    label: Text('State/UT',
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Colors.blueGrey[300],
@@ -87,7 +91,7 @@ class _MyDataTableState extends State<MyDataTable> {
                   DataColumn(
                       label: Text('A',
                       style: TextStyle(
-                      fontSize: 15.0,
+                      fontSize: 14.0,
                       color: Colors.blueGrey[300],
                     ),
                       ),
@@ -120,9 +124,9 @@ class _MyDataTableState extends State<MyDataTable> {
                   cells: [
                     DataCell(
                       Container(
-                        width: 90,
-                        child: Text(state['state'])
-                        ),
+                        width: 120,
+                        child: Text(state['state']),
+                      ),
                       onTap: () {
                         //print('Selected state is ${state['state']}');
                         Navigator.pushNamed(context,'/district',arguments: {
@@ -143,7 +147,7 @@ class _MyDataTableState extends State<MyDataTable> {
                               text: state['confirmed'],
                               style: TextStyle(
                                 color: Colors.white70,
-                                fontSize: 13.0,
+                                fontSize: 15.0,
                               ),
                             )
                           ],
@@ -159,7 +163,7 @@ class _MyDataTableState extends State<MyDataTable> {
                     DataCell(
                       Text(state['active'],
                       style: TextStyle(
-                        fontSize: 13.0,
+                        fontSize: 15.0,
                       ),
                       ),
                       onTap: () {
@@ -182,7 +186,7 @@ class _MyDataTableState extends State<MyDataTable> {
                               text: state['recovered'],
                               style: TextStyle(
                                 color: Colors.white70,
-                                fontSize: 13.0,
+                                fontSize: 15.0,
                               ),
                             )
                           ],
@@ -208,7 +212,7 @@ class _MyDataTableState extends State<MyDataTable> {
                               text: state['deaths'],
                               style: TextStyle(
                                 color: Colors.white70,
-                                fontSize: 13.0,
+                                fontSize: 15.0,
                               ),
                             )
                           ],
@@ -223,6 +227,7 @@ class _MyDataTableState extends State<MyDataTable> {
                     ),
                   ],
                 )).toList(),
+              ),
               ),
             ),
           ),

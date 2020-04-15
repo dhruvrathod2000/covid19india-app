@@ -8,6 +8,7 @@ class DailySeriesChart extends StatefulWidget {
 }
 
 class _DailySeriesChartState extends State<DailySeriesChart> {
+  double multiplierConfirmed=0.3,multiplierRecovered=0.3,multiplierDeaths=0.3;
   List data=[];
   List<DailySeries> newData=[];
   @override
@@ -24,14 +25,9 @@ class _DailySeriesChartState extends State<DailySeriesChart> {
         )
       );
     }).toList();
-    for(int i=0;i<50;i++)
-      newData.removeAt(0);
-    newData.forEach((caseNew) {
-      print(caseNew.date);
-    });
     //print(newData[50].date);
     return Scaffold(
-      backgroundColor: Colors.blueGrey[500],
+      backgroundColor: Colors.white54,
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text('Graphs'),
@@ -43,6 +39,52 @@ class _DailySeriesChartState extends State<DailySeriesChart> {
         physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         children: <Widget>[
           Text(
+            'Tap anywhere on the graph for respective date and value.',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 15.0,
+              letterSpacing: 2.0,
+            ),
+          ),
+          SizedBox(height: 20.0,),
+          Text(
+            'COMBINED CHARTS',
+            style: TextStyle(
+              color: Colors.blueGrey[900],
+              fontSize: 20.0,
+              letterSpacing: 2.0,
+            ),
+          ),
+          SizedBox(height: 10.0,),
+          Text(
+            'Confirmed',
+            style: TextStyle(
+              color: Colors.yellow,
+              fontSize: 15.0,
+              letterSpacing: 2.0,
+            ),
+          ),
+          Text(
+            'Deceased',
+            style: TextStyle(
+              color: Colors.red,
+              fontSize: 15.0,
+              letterSpacing: 2.0,
+            ),
+          ),
+          Text(
+            'Recovered',
+            style: TextStyle(
+              color: Colors.lightGreenAccent,
+              fontSize: 15.0,
+              letterSpacing: 2.0,
+            ),
+          ),
+          SizedBox(height: 10.0,),
+          CombinedConfirmedChart(data: newData),
+          SizedBox(height: 50.0,),
+          SizedBox(height: 20.0,),
+          Text(
             'CONFIRMED',
             style: TextStyle(
               color: Colors.blueGrey[900],
@@ -51,19 +93,7 @@ class _DailySeriesChartState extends State<DailySeriesChart> {
             ),
           ),
           SizedBox(height: 10.0,),
-          Container(
-            height: MediaQuery.of(context).size.height*0.3,
-            //width: MediaQuery.of(context).size.width*0.5,
-            child: ConfirmedChart(data: newData),
-          ),
-          Center(child: Text(
-            'DATE',
-            style: TextStyle(
-              color: Colors.blueGrey[900],
-              fontSize: 15.0,
-              letterSpacing: 2.0,
-            ),
-          ),),
+          ConfirmedChart(data: newData),
           SizedBox(height: 50.0,),
           Text(
             'DECEASED',
@@ -74,19 +104,7 @@ class _DailySeriesChartState extends State<DailySeriesChart> {
             ),
           ),
           SizedBox(height: 10.0,),
-          Container(
-            height: MediaQuery.of(context).size.height*0.3,
-            //width: MediaQuery.of(context).size.width*0.5,
-            child: DeathChart(data: newData),
-          ),
-          Center(child: Text(
-            'DATE',
-            style: TextStyle(
-              color: Colors.blueGrey[900],
-              fontSize: 15.0,
-              letterSpacing: 2.0,
-            ),
-          ),),
+          DeathChart(data: newData),
           SizedBox(height: 50.0,),
           Text(
             'RECOVERED',
@@ -97,19 +115,7 @@ class _DailySeriesChartState extends State<DailySeriesChart> {
             ),
           ),
           SizedBox(height: 10.0,),
-          Container(
-            height: MediaQuery.of(context).size.height*0.3,
-            //width: MediaQuery.of(context).size.width*0.5,
-            child: RecoveredChart(data: newData),
-          ),
-          Center(child: Text(
-            'DATE',
-            style: TextStyle(
-              color: Colors.blueGrey[900],
-              fontSize: 15.0,
-              letterSpacing: 2.0,
-            ),
-          ),),
+          RecoveredChart(data: newData),
           SizedBox(height: 50.0,),
         ],
       ),
