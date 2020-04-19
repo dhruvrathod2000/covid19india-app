@@ -1,7 +1,7 @@
 import 'package:http/http.dart';
 import 'dart:convert';
 class CoronaApi {
-  dynamic deaths, confirmed, recovered, active,deltaconfirmed,deltarecovered,deltadeaths;
+  dynamic deaths, confirmed, recovered, active,deltaconfirmed,deltarecovered,deltadeaths,lastUpdated;
   Future<void> getData() async {
     try{
       Response response = await get("https://api.covid19india.org/data.json");
@@ -11,7 +11,7 @@ class CoronaApi {
       //print(total);
       confirmed=total['confirmed'];
       deaths=total['deaths'];
-      //last_updated=total['lastupdatedtime'];
+      lastUpdated=total['lastupdatedtime'];
       active=total['active'];
       recovered=total['recovered'];
       deltaconfirmed=total['deltaconfirmed'];
@@ -21,7 +21,7 @@ class CoronaApi {
     catch(e){
       confirmed=0;deaths=0;active=0;recovered=0;
     }
-    print("$confirmed $active $deaths $recovered");
+    print("$confirmed $active $deaths $recovered $lastUpdated");
 
   }
 }

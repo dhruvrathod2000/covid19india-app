@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:covid19india/datetostring.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -44,6 +45,24 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ],
+            ),
+            SizedBox(height: 20.0,),
+            Text(
+              'Last Updated',
+              style: TextStyle(
+                letterSpacing: 2.0,
+                color: Colors.blueGrey[400],
+                fontSize: 20.0,
+              ),
+            ),
+            SizedBox(height: 15.0,),
+            Text(
+              betterDate(data['lastUpdated']),
+              style: TextStyle(
+                letterSpacing: 2.0,
+                color: Colors.blueGrey[200],
+                fontSize: 18.0,
+              ),
             ),
             Divider(
               color: Colors.blueGrey[800],

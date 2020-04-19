@@ -128,8 +128,10 @@ class _MyDataTableState extends State<MyDataTable> {
                         child: Text(state['state']),
                       ),
                       onTap: () {
+                        //print(state);
                         //print('Selected state is ${state['state']}');
                         Navigator.pushNamed(context,'/district',arguments: {
+                          'lastUpdated' : state['lastupdatedtime'],
                           'state' : state['state'],
                         });
                         },
@@ -157,6 +159,7 @@ class _MyDataTableState extends State<MyDataTable> {
                         print('Selected state is ${state['state']}');
                         Navigator.pushNamed(context,'/district',arguments: {
                           'state' : state['state'],
+                          'lastUpdated' : state['lastupdatedtime'],
                         });
                       },
                     ),
@@ -170,6 +173,7 @@ class _MyDataTableState extends State<MyDataTable> {
                         print('Selected state is ${state['state']}');
                         Navigator.pushNamed(context,'/district',arguments: {
                           'state' : state['state'],
+                          'lastUpdated' : state['lastupdatedtime'],
                         });
                       },
                     ),
@@ -196,6 +200,7 @@ class _MyDataTableState extends State<MyDataTable> {
                         print('Selected state is ${state['state']}');
                         Navigator.pushNamed(context,'/district',arguments: {
                           'state' : state['state'],
+                          'lastUpdated' : state['lastupdatedtime'],
                         });
                       },
                     ),
@@ -222,6 +227,7 @@ class _MyDataTableState extends State<MyDataTable> {
                         print('Selected state is ${state['state']}');
                         Navigator.pushNamed(context,'/district',arguments: {
                           'state' : state['state'],
+                          'lastUpdated' : state['lastupdatedtime'],
                         });
                       },
                     ),

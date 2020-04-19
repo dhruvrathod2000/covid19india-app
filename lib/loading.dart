@@ -20,6 +20,7 @@ class _LoadingState extends State<Loading> {
       'deltaconfirmed' : instance.deltaconfirmed,
       'deltarecovered' : instance.deltarecovered,
       'deltadeaths' : instance.deltadeaths,
+      'lastUpdated' : instance.lastUpdated,
     } );
   }
 

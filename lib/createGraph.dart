@@ -2,9 +2,6 @@ import 'package:covid19india/dailyseries_graph.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-//Just for fun :)
-
-
 class DailySeriesChart extends StatefulWidget {
   @override
   _DailySeriesChartState createState() => _DailySeriesChartState();

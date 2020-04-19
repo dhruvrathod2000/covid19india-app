@@ -27,3 +27,21 @@ class DateToString {
     return '$date $month';
   }
 }
+
+
+String betterDate(String lastUpdatedTime) {
+  DateTime latestTime = DateTime.now();
+  latestTime = latestTime.add(Duration(hours: 5,minutes: 30));
+  String lastUpdated,yy,mm,dd,time;
+  lastUpdated = lastUpdatedTime.substring(11);
+  yy=lastUpdatedTime.substring(6,10);
+  mm=lastUpdatedTime.substring(3,5);
+  dd=lastUpdatedTime.substring(0,2);
+  DateTime latestUpdated = DateTime.parse('$yy-$mm-$dd $lastUpdated');
+  lastUpdated = latestUpdated.day == latestTime.day ? 'Today ' : 'Yesterday ';
+  time = latestUpdated.hour>12 ? '${latestUpdated.hour-12} PM' : '${latestUpdated.hour} AM' ;
+  time = time.startsWith('12') ? '12 noon' : time ;
+  time = time.startsWith('0 ') ? '12 AM' : time ;
+  lastUpdated = lastUpdated + time;
+  return lastUpdated;
+}

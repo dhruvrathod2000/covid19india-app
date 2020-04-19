@@ -1,7 +1,6 @@
 import 'package:http/http.dart';
 import 'dart:convert';
 class CoronaStateApi {
-  dynamic deaths, confirmed, recovered, active;
   List total=[];
   Future<void> getStateData() async {
     Response response = await get("https://api.covid19india.org/data.json");
