@@ -30,6 +30,7 @@ class DateToString {
 
 
 String betterDate(String lastUpdatedTime) {
+  print(lastUpdatedTime);
   DateTime latestTime = DateTime.now();
   latestTime = latestTime.add(Duration(hours: 5,minutes: 30));
   String lastUpdated,yy,mm,dd,time;
@@ -39,7 +40,10 @@ String betterDate(String lastUpdatedTime) {
   dd=lastUpdatedTime.substring(0,2);
   DateTime latestUpdated = DateTime.parse('$yy-$mm-$dd $lastUpdated');
   lastUpdated = latestUpdated.day == latestTime.day ? 'Today ' : 'Yesterday ';
-  time = latestUpdated.hour>12 ? '${latestUpdated.hour-12} PM' : '${latestUpdated.hour} AM' ;
+  if(latestTime.day>latestUpdated.day+1) {
+    lastUpdated = '$dd/$mm ';
+  }
+  time = latestUpdated.hour>12 ? '${latestUpdated.hour-12}:${latestUpdated.minute} PM' : '${latestUpdated.hour}:${latestUpdated.minute} AM' ;
   time = time.startsWith('12') ? '12 noon' : time ;
   time = time.startsWith('0 ') ? '12 AM' : time ;
   lastUpdated = lastUpdated + time;
